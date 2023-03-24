@@ -75,7 +75,6 @@ texte = tk.Label(text= "Terminer la partie et voir le score")
 texte.grid(column= 1, row = 1)
 b1 = tk.Button(text = "Exit", command = "" , font = ("helvetica", "26") ) #finir la partie et afficher le score)
 b1.grid( column =  1, row = 1)
-racine.mainloop() 
 
 
 texte = tk.Label(text= "Sauvergarder la partie")
