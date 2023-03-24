@@ -4,7 +4,16 @@ gamebox=[[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
 HEIGHT = 320
 WIDTH = 320
+score = 0
 
+def sauvergarder_score():
+    mon_fichier = open("fichier.txt", "w")
+    mon_fichier.write("user01 :", score)
+    mon_fichier.close()
+   
+def play():
+    
+    
 
 racine = tk.Tk() # Création de la fenêtre racine
 canvas = tk.Canvas(racine, bg="gray34", height=HEIGHT, width=WIDTH)
@@ -55,30 +64,27 @@ canvas.focus_set()
 canvas.bind('<Key>', gestion_clavier)
 canvas.pack(padx=5, pady=5)
         
-racine.title("2048")
-racine.mainloop() # Lancement de la boucle principale
 
-texte = tk.Label(text= "Commencer la partie")
+texte = tk.Label(text= "Commencer à jouer")
 texte.grid(column= 0, row = 1)
-b1 = tk.Button(text = "Play", command = )#mettre 2 tuiles de manière aléatoire (2 ou 4) dans la grilles
-b1.grid( column = 0 , row = 1)
-racine.mainloop()
+b1 = tk.Button(text = "Play", command = "f", font = "f" , font = ("helvetica", "26") ) #mettre 2 tuiles de manière aléatoire (2 ou 4) dans la grilles
+b1.grid( column =  0, row = 1)
+
 
 texte = tk.Label(text= "Terminer la partie et voir le score")
-texte.grid(column= 0, row = 2 )
-b1 = tk.Button(text = "Exit", command =) #finir la partie et afficher le score
-b1.grid( column = 0 , row = 2)
+texte.grid(column= 1, row = 1)
+b1 = tk.Button(text = "Exit", command = "" , font = ("helvetica", "26") ) #finir la partie et afficher le score)
+b1.grid( column =  1, row = 1)
 racine.mainloop() 
 
+
 texte = tk.Label(text= "Sauvergarder la partie")
-texte.grid(column= 1, row = 2)
-b1 = tk.Button(text = "Save", command = )#sauvergarder une partie en cours dans un fichier
-b1.grid( column = 1 , row = 2)
-racine.mainloop()
+texte.grid(column= 0, row = 1)
+b1 = tk.Button(text = "Save", command = sauvergarder_score, font = ("helvetica", "26"))#sauvergarder une partie en cours dans un fichier)
+b1.grid( column =  0, row = 1)
                
 
 texte = tk.Label(text= "Reprendre une partie")
-texte.grid(column= 3 , row = 2)
-b1 = tk.Button(text = "Resume the game", command =) #reprendre une partie enregistrée
-b1.grid( column =  3, row = 2)
-racine.mainloop()
+texte.grid(column= 1, row = 2)
+b1 = tk.Button(text = "Resume the game", command = "c", font = ("helvetica", "26"))#reprendre une partie enregistrée)
+b1.grid( column =  1, row = 2)
