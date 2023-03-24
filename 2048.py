@@ -15,7 +15,7 @@ def play():
     
     
 
-racine = tk.Tk() # Création de la fenêtre racine
+racine = tk.Tk() # Création de la fenêtre racinellllll
 canvas = tk.Canvas(racine, bg="gray34", height=HEIGHT, width=WIDTH)
 canvas.grid()
 
