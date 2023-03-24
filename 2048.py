@@ -59,26 +59,26 @@ racine.title("2048")
 racine.mainloop() # Lancement de la boucle principale
 
 texte = tk.Label(text= "Commencer la partie")
-text.grid(column= , row = )
-b1 = tk.Button(text = "Play", command = #mettre 2 tuiles de manière aléatoire (2 ou 4) dans la grilles)
-b1.grid( column =  , row = )
+texte.grid(column= 0, row = 1)
+b1 = tk.Button(text = "Play", command = )#mettre 2 tuiles de manière aléatoire (2 ou 4) dans la grilles
+b1.grid( column = 0 , row = 1)
 racine.mainloop()
 
 texte = tk.Label(text= "Terminer la partie et voir le score")
-text.grid(column= , row = )
-b1 = tk.Button(text = "Exit", command = #finir la partie et afficher le score)
-b1.grid( column =  , row = )
+texte.grid(column= 0, row = 2 )
+b1 = tk.Button(text = "Exit", command =) #finir la partie et afficher le score
+b1.grid( column = 0 , row = 2)
 racine.mainloop() 
 
 texte = tk.Label(text= "Sauvergarder la partie")
-text.grid(column= , row = )
-b1 = tk.Button(text = "Save", command = #sauvergarder une partie en cours dans un fichier)
-b1.grid( column =  , row = )
+texte.grid(column= 1, row = 2)
+b1 = tk.Button(text = "Save", command = )#sauvergarder une partie en cours dans un fichier
+b1.grid( column = 1 , row = 2)
 racine.mainloop()
                
 
 texte = tk.Label(text= "Reprendre une partie")
-text.grid(column= , row = )
-b1 = tk.Button(text = "Resume the game", command = #reprendre une partie enregistrée)
-b1.grid( column =  , row = )
+texte.grid(column= 3 , row = 2)
+b1 = tk.Button(text = "Resume the game", command =) #reprendre une partie enregistrée
+b1.grid( column =  3, row = 2)
 racine.mainloop()
