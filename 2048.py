@@ -82,7 +82,8 @@ texte = tk.Label(text= "Sauvergarder la partie")
 text.grid(column= , row = )
 b1 = tk.Button(text = "Save", command = #sauvergarder une partie en cours dans un fichier)
 b1.grid( column =  , row = )
-
+racine.mainloop()
+               
 import tkinter as tk
 racine = tk.Tk
 racine.title("2048")
@@ -90,3 +91,4 @@ texte = tk.Label(text= "Reprendre une partie")
 text.grid(column= , row = )
 b1 = tk.Button(text = "Resume the game", command = #reprendre une partie enregistrée)
 b1.grid( column =  , row = )
+racine.mainloop()
