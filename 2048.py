@@ -67,7 +67,7 @@ canvas.pack(padx=5, pady=5)
 
 texte = tk.Label(text= "Commencer à jouer")
 texte.grid(column= 0, row = 1)
-b1 = tk.Button(text = "Play", command = "f", font = "f" , font = ("helvetica", "26") ) #mettre 2 tuiles de manière aléatoire (2 ou 4) dans la grilles
+b1 = tk.Button(text = "Play", command = play , font = ("helvetica", "26")) #mettre 2 tuiles de manière aléatoire (2 ou 4) dans la grilles
 b1.grid( column =  0, row = 1)
 
 
