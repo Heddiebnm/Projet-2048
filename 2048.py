@@ -9,9 +9,25 @@ HEIGHT = 320
 WIDTH = 320
 score = 0
 
-def tuiles_au_hasard():
-    for i in range (10):
-        tuiles = (rd.randint(0,10))
+def choisir_tuiles_au_hasard():
+    tuiles_au_hasard=[]
+    for i in range (1):
+        tuiles= [2,2,2,2,2,2,2,2,2,4]
+        AP_tuiles = rd.randint(0,len(tuiles)-1)
+        tuiles_au_hasard=tuiles_au_hasard+tuiles[AP_tuiles]
+    return tuiles_au_hasard
+
+a = choisir_tuiles_au_hasard()
+
+
+
+def déplacement_droite():
+
+def déplacement_gauche():
+
+def déplacement_haut():
+
+def déplacement_bas():
 
 
 
@@ -96,3 +112,25 @@ texte = tk.Label(text= "Reprendre une partie")
 texte.grid(column= 1, row = 2)
 b1 = tk.Button(text = "Resume the game", command = "c", font = ("helvetica", "26"))#reprendre une partie enregistrée)
 b1.grid( column =  1, row = 2)
+
+texte = tk.Label(text= "se déplacer à droite")
+texte.grid(column= 0, row = 1)
+b1 = tk.Button(text = "Droite", command = déplacement_droite , font = ("helvetica", "26")) #boutton permettant le déplacement à droite
+b1.grid( column =  0, row = 1)
+
+texte = tk.Label(text= "se déplacer à gauche")
+texte.grid(column= 0, row = 1)
+b1 = tk.Button(text = "Gauche", command = déplacement_gauche , font = ("helvetica", "26")) #boutton permettant le déplacement à gauche
+b1.grid( column =  0, row = 1)
+
+texte = tk.Label(text= "se déplacer en haut")
+texte.grid(column= 0, row = 1)
+b1 = tk.Button(text = "Haut", command = déplacement_haut , font = ("helvetica", "26")) #boutton permettant le déplacement en haut
+b1.grid( column =  0, row = 1)
+
+texte = tk.Label(text= "se déplacer en bas")
+texte.grid(column= 0, row = 1)
+b1 = tk.Button(text = "Bas", command = déplacement_bas , font = ("helvetica", "26")) #boutton permettant le déplacement en bas 
+b1.grid( column =  0, row = 1)
+
+racine.mainloop()
