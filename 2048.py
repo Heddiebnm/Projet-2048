@@ -1,10 +1,19 @@
 import tkinter as tk
+import random as rd
 
 gamebox=[[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+tuiles= [2,2,2,2,2,2,2,2,2,4]
+
 
 HEIGHT = 320
 WIDTH = 320
 score = 0
+
+def tuiles_au_hasard():
+    for i in range (10):
+        tuiles = (rd.randint(0,10))
+
+
 
 def sauvergarder_score():
     mon_fichier = open("fichier.txt", "w")
@@ -16,7 +25,7 @@ def play():
     
 
 racine = tk.Tk() # Création de la fenêtre racinejjjjjjjj
-canvas = tk.Canvas(racine, bg="gray34", height=HEIGHT, width=WIDTH)
+canvas = tk.Canvas(racine, bg="PaleGreen1", height=HEIGHT, width=WIDTH)
 canvas.grid()
 
 def dessiner_lignes():
