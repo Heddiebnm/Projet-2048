@@ -9,6 +9,7 @@ création du joueur "tuile" --> Heddie
 fonction permettant d'empiler deux tuiles --> Farah
 fonction permettant de mettre fin à la partie si le joueur n'est plus en mesure de modifier sa grille --> Felix
 fonction permettant l'empilement de deux tuiles de même valeur -->
+test
 
 
 
