@@ -11,21 +11,75 @@ def choisir_tuiles_au_hasard():
     return tuiles_au_hasard
 
 
-
+  # Fonction pour déplacer les tuiles vers la droite.
 def déplacement_droite():
-    pass
+    for i in range(4):
+        for j in range(3, 0, -1):
+            if grid[i][j] == 0:
+                for k in range(j-1, -1, -1):
+                    if grid[i][k] != 0:
+                        grid[i][j], grid[i][k] = grid[i][k], grid[i][j]
+                        break
+
+        # Fusion des tuiles identiques.
+        for j in range(3, 0, -1):
+            if grid[i][j] != 0 and grid[i][j] == grid[i][j-1]:
+                grid[i][j] *= 2
+                grid[i][j-1] = 0
 
 
+# Fonction pour déplacer les tuiles vers la gauche.
 def déplacement_gauche():
-    pass
+    for i in range(4):
+                for j in range(3):
+            if grid[i][j] == 0:
+                for k in range(j+1, 4):
+                    if grid[i][k] != 0:
+                        grid[i][j], grid[i][k] = grid[i][k], grid[i][j]
+                        break
+
+        # Fusion des tuiles identiques.
+        for j in range(3):
+            if grid[i][j] != 0 and grid[i][j] == grid[i][j+1]:
+                grid[i][j] *= 2
+                grid[i][j+1] = 0
 
 
+
+# Fonction pour déplacer les tuiles vers le haut.
 def déplacement_haut():
-    pass
+    for j in range(4):
+        for i in range(3):
+            if grid[i][j] == 0:
+                for k in range(i+1, 4):
+                    if grid[k][j] != 0:
+                        grid[i][j], grid[k][j] = grid[k][j], grid[i][j]
+                        break
+
+        # Fusion des tuiles identiques.
+        for i in range(3):
+            if grid[i][j] != 0 and grid[i][j] == grid[i+1][j]:
+                grid[i][j] *= 2
+                grid[i+1][j] = 0
 
 
+# Fonction pour déplacer les tuiles vers le bas.
 def déplacement_bas():
-    pass
+    for j in range(4):
+        for i in range(3, 0, -1):
+            if grid[i][j] == 0:
+                for k in range(i-1, -1, -1):
+                    if grid[k][j] != 0:
+                        grid[i][j], grid[k][j] = grid[k][j], grid[i][j]
+                        break
+
+        # Fusion des tuiles identiques.
+        for i in range(3, 0, -1):
+            if grid[i][j] != 0 and grid[i][j] == grid[i-1][j]:
+                grid[i][j] *= 2
+                grid[i-1][j] = 0
+       
+
 
 
 def sauvergarder_score():
