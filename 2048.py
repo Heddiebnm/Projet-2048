@@ -33,12 +33,22 @@ def start():
             label["text"] =str(grid[i][j])
     
 
-def déplacement_droite():# Déplacement des tuiles.
-    for i in range(4):# Fusion des tuiles identiques.
+def déplacement_droite():
+    for i in range(4):
+        # Fusion des tuiles identiques.
         for j in range(3, 0, -1):
             if grid[i][j] != 0 and grid[i][j] == grid[i][j-1]:
                 grid[i][j] *= 2
                 grid[i][j-1] = 0
+        # Déplacement des tuiles.
+        for j in range(3, 0, -1):
+            if grid[i][j] == 0:
+                for k in range(j-1, -1, -1):
+                    if grid[i][k] != 0:
+                        grid[i][j], grid[i][k] = grid[i][k], grid[i][j]
+                        break
+        
+        
 
 def déplacement_gauche():
     for i in range(4):
@@ -57,18 +67,44 @@ def déplacement_gauche():
                         break
 
 def déplacement_haut():
-    pass
+    for j in range(4):
+        # Fusion des tuiles identiques.
+        for i in range(3):
+            if grid[i][j] != 0 and grid[i][j] == grid[i+1][j]:
+                grid[i][j] *= 2
+                grid[i+1][j] = 0
+                
+            # Déplacement des tuiles.
+        for i in range(3):
+            if grid[i][j] == 0:
+                for k in range(i+1, 4):
+                    if grid[k][j] != 0:
+                        grid[i][j], grid[k][j] = grid[k][j], grid[i][j]
+                        break
+
+
+
 
 def déplacement_bas():
-    pass
+    for j in range(4):
+        # Fusion des tuiles identiques.
+        for i in range(3, 0, -1):
+            if grid[i][j] != 0 and grid[i][j] == grid[i-1][j]:
+                grid[i][j] *= 2
+                grid[i-1][j] = 0
+    # Déplacement des tuiles.
+    for i in range(3, 0, -1):
+            if grid[i][j] == 0:
+                for k in range(i-1, -1, -1):
+                    if grid[k][j] != 0:
+                        grid[i][j], grid[k][j] = grid[k][j], grid[i][j]
+                        break
+
 
 def reset():
     pass
 
 def save():
-    pass
-
-def start():
     pass
 
 def end():
