@@ -10,7 +10,7 @@ grid = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
 for i in range(4):
     for j in range(4):
-        label = tk.Label(racine, text=grid[i][j], width=12, height=6, font=("Arial", 20, "bold"), bg="gray80")
+        label = tk.Label(racine, text=grid[i][j], width=12, height=6, font=("Arial", 20, "bold"), bg="SlateGray1")
         label.grid(row=i, column=j, padx=5, pady=5)
 
 
