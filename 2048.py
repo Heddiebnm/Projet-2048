@@ -127,6 +127,8 @@ def reset(): # fonction permettant de réinitialiser la grille
     grid = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]] # nouvelle grille
     start() # appelle de nouveau la fonction start pour replacer deux nouvelles tuiles
 
+def load():
+    pass
 
 def save(): # fonction permettant de sauvegarder une partie
     pass
@@ -183,26 +185,20 @@ root.title("Interface graphique 2048")
 root.geometry("350x400") 
 root.config(background='#808080')
 
-frame = Frame(root, bg='#808080', bd=1) 
-
-label_title= Label(frame, text="Sudoku", font=("arial", 40), bg='#808080', fg='white') 
-label_title.pack() 
-
-label_subtitle= Label(frame, text="Commençons à jouer", font=("arial", 20), bg='#808080', fg='white')
-label_subtitle.pack()
 
 button8 = tk.Button(root, text="Commencer une nouvelle partie", command=new_game, font=("helvetica", "20"),
                     relief="groove")  # création d'un widget
-button8.grid(column=0, row=0)  # positionnement du bouton save
+button8.grid(column=1, row=0)  # positionnement du bouton save
+
+button8 = tk.Button(root, text="Charger une partie", command=load, font=("helvetica", "20"),
+                    relief="groove")  # création d'un widget
+button8.grid(column=1, row=1)  # positionnement du bouton save
+
+button8 = tk.Button(root, text="Quitter la partie", command=exit, font=("helvetica", "20"),
+                    relief="groove")  # création d'un widget
+button8.grid(column=1, row=2)  # positionnement du bouton save
 
 
-jouer_button= Button(frame, text="Jouer !", font=("Courrier", 15), bg='white', fg='#808080', command=lambda: start())
-jouer_button.pack(pady=25)
-
-quitter_button= Button(frame, text="Quitter", font=("Courrier", 15), bg='white', fg='#808080', command=quit)
-quitter_button.pack()
-
-frame.pack(expand=YES)
 root.mainloop()
 
 racine.mainloop()
