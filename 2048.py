@@ -133,8 +133,8 @@ def load():
 def save(): # fonction permettant de sauvegarder une partie
     pass
 
-def exit():
-    score = sum(sum(ligne) for ligne in grid) # Calculer le score en faisant la somme des valeurs dans la grille
+def fin_de_la_partie():
+    score = sum(sum(tile) for tile in grid) # Calculer le score en faisant la somme des valeurs dans la grille
     message = "Fin de la partie!\nScore : " + str(score)
     label_score = tk.Label(racine, text=message, font=("Arial", 18))
     label_score.pack()
@@ -173,7 +173,7 @@ Button6 = tk.Button(racine, text="Save", command=save, font=("helvetica", "20"),
                     relief="groove")  # création d'un widget
 Button6.grid(column=6, row=0)  # positionnement du bouton save
 
-Button7 = tk.Button(racine, text="Exit", command=exit, font=("helvetica", "20"),
+Button7 = tk.Button(racine, text="Exit", command=fin_de_la_partie, font=("helvetica", "20"),
                     relief="groove")  # création d'un widget
 Button7.grid(column=5, row=4)  # positionnement du bouton save
 
