@@ -119,6 +119,11 @@ def reset():
 
 def save():
     pass
+def exit():
+    score = sum(sum(ligne) for ligne in grid) # Calculer le score en faisant la somme des valeurs dans la grille
+    message = "Fin de la partie!\nScore : " + str(score)
+    label_score = tk.Label(fenetre, text=message, font=("Arial", 18))
+    label_score.pack()
 
 start()
 
@@ -143,5 +148,8 @@ Button6 = tk.Button(racine, text="Save", command=save, font=("helvetica", "20"),
                     relief="groove")  # création d'un widget
 Button6.grid(column=6, row=0)  # positionnement du bouton save
 
+Button7 = tk.Button(racine, text="Exit", command=exit, font=("helvetica", "20"),
+                    relief="groove")  # création d'un widget
+Button7.grid(column=6, row=0)  # positionnement du bouton save
 
 racine.mainloop()  # permet d'afficher la fenêtre
