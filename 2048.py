@@ -150,6 +150,6 @@ Button6.grid(column=6, row=0)  # positionnement du bouton save
 
 Button7 = tk.Button(racine, text="Exit", command=exit, font=("helvetica", "20"),
                     relief="groove")  # création d'un widget
-Button7.grid(column=6, row=0)  # positionnement du bouton save
+Button7.grid(column=7, row=0)  # positionnement du bouton save
 
 racine.mainloop()  # permet d'afficher la fenêtre
