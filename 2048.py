@@ -6,6 +6,12 @@ import random
 racine = tk.Tk()
 racine.title("2048")
 
+root = tk.Tk()
+# personnaliser l'interface graphique
+root.title("Interface graphique 2048")
+root.geometry("350x400") 
+root.config(background='#808080')
+
 # Créer une grille
 grid = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 # Dictionnaire de couleur 
@@ -149,7 +155,7 @@ def partie_gagné():
 
 #Affichage du score pour la commande fin de la partie
 Score_aff = tk.Tk()
-Score_aff.title("2048")
+Score_aff.title("Score")
 
 def fin_de_la_partie():
     score = sum(sum(tile) for tile in grid) # Calculer le score en faisant la somme des valeurs dans la grille
@@ -193,26 +199,10 @@ Button6 = tk.Button(racine, text="Save", command=save, font=("helvetica", "20"),
                     relief="groove")  # création d'un widget
 Button6.grid(column=6, row=0)  # positionnement du bouton save
 
-Button7 = tk.Button(racine, text="Exit", command=fin_de_la_partie, font=("helvetica", "20"),
+Button7 = tk.Button(racine, text="Score", command=fin_de_la_partie, font=("helvetica", "20"),
                     relief="groove")  # création d'un widget
 Button7.grid(column=5, row=4)  # positionnement du bouton exit
 
-
-
-root=tk.Tk()
-
-#HEIGHT = 320
-#WIDTH = 320
-
-#racine = tk.Tk() # Création de la fenêtre racine
-#canvas = tk.Canvas(racine, bg="gray34", height=HEIGHT, width=WIDTH)
-#canvas.grid()
-
-
-# personnaliser l'interface graphique
-root.title("Interface graphique 2048")
-root.geometry("350x400") 
-root.config(background='#808080')
 
 button8 = tk.Button(root, text="Commencer une nouvelle partie", command=new_game, font=("helvetica", "20"),
                     relief="groove")  # création d'un widget
