@@ -127,12 +127,24 @@ def reset(): # fonction permettant de réinitialiser la grille
     start() # appelle de nouveau la fonction start pour replacer deux nouvelles tuiles
 
 def save(): # fonction permettant de sauvegarder une partie
-    mon_fichier = open("fichier.txt", "w")
-    mon_fichier.write("user01 :", grid)
-    mon_fichier.close()
+    partie_sauvegardé = open("partie_sauvegardé.txt", "w")
+    partie_sauvegardé.write("user01 :", str(grid))
+    partie_sauvegardé.close()
 
-def load():
-    pass
+#def load():
+    #chargement_partie = open('partie_sauvegardé.txt', 'r') #r = read, permet de lire le contenu du fichier
+    #li = chargement_partie.readline()
+    
+        
+    #li = chargement_partie.readline()
+    #chargement_partie.close()
+
+def partie_gagné():
+    if i or j == 2048:
+        message= "Tu as gagné"
+        label_win = tk.Label(racine, text=message, font=("Arial", 18))
+        label_win.pack()
+
 
 def fin_de_la_partie():
     score = sum(sum(tile) for tile in grid) # Calculer le score en faisant la somme des valeurs dans la grille
@@ -208,5 +220,5 @@ button10 = tk.Button(root, text="Quitter la partie", command=exit, font=("helvet
 button10.grid(column=1, row=2)  # positionnement du bouton save
 
 
-root.mainloop()
-racine.mainloop()
+root.mainloop() # lance la fenêtre root
+racine.mainloop() # lance la fenêtre racine
