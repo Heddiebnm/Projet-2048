@@ -131,13 +131,15 @@ def save(): # fonction permettant de sauvegarder une partie
     partie_sauvegardé.write(str(grid)) #Fonctionne avec seulement un imput dans la fonction write, elle peut pas en detecter deux 
     partie_sauvegardé.close()
 
-#def load():
-    #chargement_partie = open('partie_sauvegardé.txt', 'r') #r = read, permet de lire le contenu du fichier
-    #li = chargement_partie.readline()
-    
-        
-    #li = chargement_partie.readline()
-    #chargement_partie.close()
+def load(): #Probleme avec le réaffichage de la grille, le chargement fonctionne corretement toutefois
+    global grid
+    chargement_partie = open('partie_sauvegardé.txt', 'r') #r = read, permet de lire le contenu du fichier
+    li = chargement_partie.readline()
+    grid = li
+
+    update_affichage()
+    maj_couleurs()    
+    chargement_partie.close()
 
 def partie_gagné():
     if i or j == 2048:
