@@ -147,6 +147,9 @@ def partie_gagné():
         label_win = tk.Label(racine, text=message, font=("Arial", 18))
         label_win.pack()
 
+#Affichage du score pour la commande fin de la partie
+Score_aff = tk.Tk()
+Score_aff.title("2048")
 
 def fin_de_la_partie():
     score = sum(sum(tile) for tile in grid) # Calculer le score en faisant la somme des valeurs dans la grille
