@@ -41,8 +41,8 @@ Etape du jeu :
 
 Sources:
 
-boutons --> cours et TD
-Fonctions --> cours, TD et perfectionnement et/ou correction des erreurs à l'aide de 2 étudiants et de 2 ingénieurs en info
+boutons --> cours et TD;
+Fonctions --> cours, TD et perfectionnement et/ou correction des erreurs à l'aide de 2 étudiants et de 2 ingénieurs en info;
 Couleurs --> https://htmlcolorcodes.com
 
 
