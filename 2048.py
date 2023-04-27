@@ -128,7 +128,7 @@ def reset(): # fonction permettant de réinitialiser la grille
 
 def save(): # fonction permettant de sauvegarder une partie
     partie_sauvegardé = open("partie_sauvegardé.txt", "w")
-    partie_sauvegardé.write("user01 :", str(grid))
+    partie_sauvegardé.write(str(grid)) #Fonctionne avec seulement un imput dans la fonction write, elle peut pas en detecter deux 
     partie_sauvegardé.close()
 
 #def load():
