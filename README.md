@@ -14,7 +14,7 @@ Etape du jeu :
 1.	Interface graphique :
 - Afficher la grille de jeu
 - Créer une interface utilisateur pour permettre à l'utilisateur d'interagir avec le jeu en cliquant sur les boutons
--	(Afficher des messages de victoire ou de défaite à l'utilisateur) ?
+-	Afficher des messages de victoire ou de défaite à l'utilisateur
 
 2.	Initialisation de la grille :
 -	Créer une grille vide de taille 4x4
@@ -32,7 +32,7 @@ Etape du jeu :
 -	Afficher la grille
 
 5. Fin de partie :
--	(Vérifier si le joueur a atteint la valeur 2048.) ? 
+-	Vérifier si le joueur a atteint la valeur 2048.
 - Vérifier s'il y a encore des cases vides sur la grille, ou s'il est possible de déplacer des tuiles dans au moins une direction. 
 - Créer un bouton, et sa fonction associée, qui va permettre de mettre fin à la partie et d'afficher le score, qui est la somme de toutes les tuiles de la grille.
 - Créer un bouton, et sa fonction associéee, qui va permettre de sauvegarder une partie dans un fichier
