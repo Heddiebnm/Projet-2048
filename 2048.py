@@ -176,7 +176,7 @@ Button6.grid(column=6, row=0)  # positionnement du bouton save
 
 Button7 = tk.Button(racine, text="Exit", command=fin_de_la_partie, font=("helvetica", "20"),
                     relief="groove")  # création d'un widget
-Button7.grid(column=5, row=4)  # positionnement du bouton save
+Button7.grid(column=5, row=4)  # positionnement du bouton exit
 
 
 
