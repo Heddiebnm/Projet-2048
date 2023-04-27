@@ -2,7 +2,6 @@ import tkinter as tk
 import random
 
 
-
 # Créer une fenêtre
 racine = tk.Tk()
 racine.title("2048")
@@ -24,7 +23,7 @@ def add_tile():
     empty_cells = [(i, j) for i in range(4) for j in range(4) if grid[i][j] == 0]
     if empty_cells:
         i, j = random.choice(empty_cells)
-        grid[i][j] = 2 if random.random() < 0.9 else 4 # l'ajout d'une de valeur 2 avec 9 fois plus de chance d'apparition que la 4
+        grid[i][j] = 2 if random.random() < 0.9 else 4 # ajout d'une de valeur 2 avec 9 fois plus de chance d'apparition que la 4
 
  # fonction permettant le lancement de la partie en ajoutant deux tuiles au départ
 def start():
@@ -127,10 +126,12 @@ def reset(): # fonction permettant de réinitialiser la grille
     grid = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]] # nouvelle grille
     start() # appelle de nouveau la fonction start pour replacer deux nouvelles tuiles
 
-def load():
-    pass
-
 def save(): # fonction permettant de sauvegarder une partie
+    mon_fichier = open("fichier.txt", "w")
+    mon_fichier.write("user01 :", grid)
+    mon_fichier.close()
+
+def load():
     pass
 
 def fin_de_la_partie():
@@ -180,25 +181,32 @@ Button7.grid(column=5, row=4)  # positionnement du bouton save
 
 
 root=tk.Tk()
+
+#HEIGHT = 320
+#WIDTH = 320
+
+#racine = tk.Tk() # Création de la fenêtre racine
+#canvas = tk.Canvas(racine, bg="gray34", height=HEIGHT, width=WIDTH)
+#canvas.grid()
+
+
 # personnaliser l'interface graphique
 root.title("Interface graphique 2048")
 root.geometry("350x400") 
 root.config(background='#808080')
 
-
 button8 = tk.Button(root, text="Commencer une nouvelle partie", command=new_game, font=("helvetica", "20"),
                     relief="groove")  # création d'un widget
 button8.grid(column=1, row=0)  # positionnement du bouton save
 
-button8 = tk.Button(root, text="Charger une partie", command=load, font=("helvetica", "20"),
+button9 = tk.Button(root, text="Charger une partie", command=load, font=("helvetica", "20"),
                     relief="groove")  # création d'un widget
-button8.grid(column=1, row=1)  # positionnement du bouton save
+button9.grid(column=1, row=1)  # positionnement du bouton save
 
-button8 = tk.Button(root, text="Quitter la partie", command=exit, font=("helvetica", "20"),
+button10 = tk.Button(root, text="Quitter la partie", command=exit, font=("helvetica", "20"),
                     relief="groove")  # création d'un widget
-button8.grid(column=1, row=2)  # positionnement du bouton save
+button10.grid(column=1, row=2)  # positionnement du bouton save
 
 
 root.mainloop()
-
 racine.mainloop()
