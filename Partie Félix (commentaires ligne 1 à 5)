@@ -1,0 +1,223 @@
+#Je suis Félix RICHE (22009202) L1 Bi Td04 groupe 4 et voici la partie que j'avais fait sur le projet 2048.
+#N'ayant pas réussi à faire de pull j'ai travaillé sur une ancienne version de notre projet, c'est pourquoi le nom de certaines
+#variables ou fonctions n'est pas le même que dans la version finale. Je tiens à vous rappeler en toute transparence que je
+# n'ai pas participé à la version finale de notre projet mais voici la partie que j'ai faite de mon côté J'étais chargé d'écrire les fonctions de mouvement du plateau,
+#ainsi que leur associer des boutons, mon travail commence donc à la ligne 78. 
+
+import tkinter as tk
+import random
+
+gamebox=[[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+
+HEIGHT = 320
+WIDTH = 320
+score = 0
+
+def sauvergarder_score():
+    mon_fichier = open("fichier.txt", "w")
+    mon_fichier.write("user01 :", score)
+    mon_fichier.close()
+    
+    
+
+racine = tk.Tk() # Création de la fenêtre racine
+canvas = tk.Canvas(racine, bg="gray34", height=HEIGHT, width=WIDTH)
+canvas.grid()
+
+def dessiner_lignes():
+    #lignes horizontales
+    canvas.create_line(1, 3, 320, 3,fill='black', width=10)
+    canvas.create_line(1, 80, 320, 80,fill='black', width=3)
+    canvas.create_line(1, 160, 320, 160,fill='black', width=3)
+    canvas.create_line(1, 240, 320, 240,fill='black', width=3)
+    canvas.create_line(1, 320, 320, 320, fill='black', width=10)
+ 
+    #lignes verticales
+    canvas.create_line(3, 1, 3, 320,fill='black', width=10)
+    canvas.create_line(80, 1, 80, 320,fill='black', width=3)
+    canvas.create_line(160, 1, 160, 320,fill='black', width=3)
+    canvas.create_line(240, 1, 240, 320,fill='black', width=3)
+    canvas.create_line(320, 1, 320, 325, fill='black', width=10)
+
+def dessiner_chiffres(tab):
+    k=0
+    l=0
+    for i in range(0,4):
+        if i==0:
+            k+=40
+        else:
+            k+=80
+        l=0
+        for j in range(0,4):
+            if j==0:
+                l+=40
+            else:
+                l+=80
+            if tab[i][j]!=0:
+                canvas.create_text(l, k, text=str(tab[i][j]), font=("arial",30,"bold"))
+
+
+def actualiser_fenetre(tab):
+    for i in range(4):
+        for j in range(4):
+            label = racine.grid_slaves(row=i, column=j)[0]
+            label["text"] = str(gamebox[i][j])
+ 
+#console_affiche(gamebox)
+ 
+actualiser_fenetre(gamebox) # check
+ 
+#canvas.focus_set()
+#canvas.bind('<Key>', gestion_clavier)
+#canvas.pack(padx=5, pady=5)
+#*******************************
+#*******************************
+#DEBUT DE LA PARTIE FELIX RICHE
+#*******************************
+#*******************************
+#Fontion permettant l'ajout d'une nouvelle cases
+def nouvelle_case():
+    global gamebox
+    global cases_vides
+    cases_vides = [(i, j) for i in range(4) for j in range(4) if gamebox[i][j] == 0]
+    if len(cases_vides) != 0 :
+        i, j = random.choice(cases_vides)
+        gamebox[i][j] = random.choice([2, 2, 2, 4]) #remplacement d'une tuile 0 par une tuile 2 (75% de chances) ou une tuile 4 (25%)
+
+#Fonction initiant une partie en remplaçant 2 tuiles vides par 2 tuiles 2 ou 4
+def début_de_partie():
+    nouvelle_case()
+    nouvelle_case()
+    actualiser_fenetre()
+
+
+#Fonction permettant de fusionner les cases identiques de haut en bas et d'additionner leurs valeurs
+def addition1(gamebox):
+    for j in range(4):
+        for i in range(3, 0, -1):
+            if gamebox[i][j] != 0 and gamebox[i][j] == gamebox[i-1][j]:
+                gamebox[i][j] *= 2
+                gamebox[i-1][j] = 0
+
+#Fonction permettant de déplacer toutes les cases vers le bas si possible
+def déplacement_bas(gamebox):
+    for j in range(4):
+        for i in range(2, -1, -1):
+            if gamebox[i][j] != 0:
+                rangée = i
+                while rangée < 3 and gamebox[rangée+1][j] == 0:
+                    gamebox[rangée][j], gamebox[rangée+1][j] = gamebox[rangée+1][j], gamebox[rangée][j]
+                    rangée += 1
+
+#Fonction permettant de fusionner les cases identiques de droite à gauche et d'additionner leurs valeurs
+def addition2(gamebox):
+    for i in range(4):
+        for j in range(3):
+            if gamebox[i][j] != 0 and gamebox[i][j] == gamebox[i][j+1]:
+                gamebox[i][j] *= 2
+                gamebox[i][j+1] = 0
+
+#Fonction permettant de déplacer toutes les cases vers la gauche si possible
+def déplacement_gauche(gamebox):
+    for i in range(4):
+        for j in range(1, 4):
+            if gamebox[i][j] != 0:
+                colonne = j
+                while colonne > 0 and gamebox[i][colonne-1] == 0:
+                    gamebox[i][colonne], gamebox[i][colonne-1] = gamebox[i][colonne-1], gamebox[i][colonne]
+                    colonne -= 1
+
+#Fonction permettant de fusionner les cases identiques de gauche à droite et d'additionner leurs valeurs
+def addition3(gamebox):
+    for i in range(4):
+        for j in range(3, 0, -1):
+            if gamebox[i][j] != 0 and gamebox[i][j] == gamebox[i][j-1]:
+                gamebox[i][j] *= 2
+                gamebox[i][j-1] = 0
+
+#Fonction permettant de déplacer toutes les cases vers la droite si possible
+def déplacement_droite(gamebox):
+    for i in range(4):
+        for j in range(2, -1, -1):
+            if gamebox[i][j] != 0:
+                colonne = j
+                while colonne < 3 and gamebox[i][colonne+1] == 0:
+                    gamebox[i][colonne], gamebox[i][colonne+1] = gamebox[i][colonne+1], gamebox[i][colonne]
+                    colonne += 1
+
+#Fonction permettant de fusionner les cases identiques de bas en haut et d'additionner leurs valeurs
+def addition4(gamebox):
+    for j in range(4):
+        for i in range(3):
+            if gamebox[i][j] != 0 and gamebox[i][j] == gamebox[i+1][j]:
+                gamebox[i][j] *= 2
+                gamebox[i+1][j] = 0
+
+#Fonction permettant de déplacer toutes les cases vers le haut si possible
+def déplacement_haut(grid):
+    for j in range(4):
+        for i in range(1, 4):
+            if gamebox[i][j] != 0:
+                rangée = i
+                while rangée > 0 and gamebox[rangée-1][j] == 0:
+                    gamebox[rangée][j], gamebox[rangée-1][j] = gamebox[rangée-1][j], gamebox[rangée][j]
+                    rangée -= 1
+
+#Fonction permettant de déplacer le plateau vers le bas
+def bas():
+    addition1(gamebox)
+    déplacement_bas(gamebox)
+    nouvelle_case()
+    actualiser_fenetre
+
+#Fonction permettant de déplacer le plateau vers la gauche
+def gauche():
+    addition2(gamebox)
+    déplacement_gauche(gamebox)
+    nouvelle_case()
+    actualiser_fenetre()
+
+#Fonction permettant de déplacer le plateau vers la droite
+def droite():
+    addition3(gamebox)
+    déplacement_droite(gamebox)
+    nouvelle_case()
+    actualiser_fenetre()
+
+#Fonction permettant de déplacer le plateau vers le haut
+def haut():
+    addition4(gamebox)
+    déplacement_haut(gamebox)
+    nouvelle_case()
+    actualiser_fenetre()
+
+#Fonction permettant de mettre fin à une partie si aucun coup n'est possible
+#n'ayant pas définit la fonction fin_de_partie moi même cette fonction n'est pas fonctionnelle
+def check_fin_de_partie():
+    new_gamebox = gamebox
+    if len(cases_vides) == 0 :
+        haut()
+        gauche()
+        droite()
+        bas()
+    if new_gamebox == gamebox : #cette condition vérifie que tous les mouvements ne changent pas la disposition du plateau
+        fin_de_partie()
+
+        
+#Caractéristiques du bouton du haut
+B1 = tk.Button(racine, text="haut", command=haut, font=("arial", "18"), relief="ridge")
+B1.grid(column=1, row=1)  
+
+#Caractéristiques du bouton du bas
+B2 = tk.Button(racine, text="bas", command=bas, font=("arial", "18"), relief="ridge")
+B2.grid(column=2, row=1)  
+
+#Caractéristiques du bouton de la gauche
+B3 = tk.Button(racine, text="gauche", command=gauche, font=("arial", "18"), relief="ridge")
+B3.grid(column=3, row=1)  
+
+#Caractéristiques du bouton de la droite
+B4 = tk.Button(racine,text="droite", command=droite, font=("arial", "18"), relief="ridge")
+B4.grid(column=4, row=1)  
+
+racine.mainloop()
