@@ -150,9 +150,11 @@ def partie_gagné():
 
 def fin_de_la_partie():
     score = sum(sum(tile) for tile in grid) # Calculer le score en faisant la somme des valeurs dans la grille
-    message = "Fin de la partie!\nScore : " + str(score)
-    label_score = tk.Label(racine, text=message, font=("Arial", 18))
-    label_score.pack()
+    message_score = "Fin de la partie!\nScore : " + str(score)
+    print(message_score)
+    label_Score = tk.Label(Score_aff, text=message_score, font=("Arial", 18))
+    label_Score.pack()
+    
 
 def maj_couleurs(): # fonction pour les couleurs de chaque tuile
     for i in range(4):
